@@ -19,10 +19,47 @@ function viewDepartment() {
   connection.query("SELECT * FROM department", function(err, res) {
       if (err) throw err;
       console.table(res)
+      askQuestions();
+  })
+}
+
+function viewRole() {
+  connection.query("SELECT * FROM role", function(err, res) {
+      if (err) throw err;
+      console.table(res)
+      askQuestions();
+  })
+}
+
+function viewEmployee() {
+  connection.query("SELECT * FROM employee", function(err, res) {
+      if (err) throw err;
+      console.table(res)
+      askQuestions();
   })
 }
 
 function askQuestions() {
-  inquirer.prompt
+  inquirer.prompt ([
+    {
+        type: "list",
+        name: "name",
+        message: "What would you like to do?",
+        choices: ["view all employees", "view all roles", "view all departments"]
+
+    },
+    
+
+
+]).then(answers => {
+    console.log(answers)
+    switch(answers.name) {
+      case "view all departments":
+      viewDepartment();
+
+    
+    }
+}) 
 }
 
+askQuestions();
