@@ -49,15 +49,22 @@ function askQuestions() {
 
     },
     
-
-
+    
 ]).then(answers => {
     console.log(answers)
     switch(answers.name) {
       case "view all departments":
       viewDepartment();
-
-    
+    }
+    console.log(answers)
+    switch(answers.first_name, answers.last_name, answers.role_id, answers.manager_id) {
+      case "view all roles":
+      viewRole();
+    }
+    console.log(answers)
+    switch(answers.title, answers.salary, answers.department_id) {
+      case "view all employees":
+      viewEmployee();
     }
 }) 
 }
